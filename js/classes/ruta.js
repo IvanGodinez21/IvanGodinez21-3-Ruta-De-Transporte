@@ -1,3 +1,4 @@
+import { Interfaz } from './interfaz.js'
 const Ruta = (function (numero) {
     this.numero = numero;
     this.inicio = null;

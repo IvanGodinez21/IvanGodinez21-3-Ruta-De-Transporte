@@ -14,21 +14,24 @@ const Interfaz = (function () {
         tablenombre.innerText = '----';
         tableduracion.innerText = '----';
     }
-    function listar(aux) {
+    function listar(inicio) {
         let table = document.getElementById('lista');
         table.innerHTML = '';
         let cabecera = table.insertRow(-1);
         let titulo1 = cabecera.insertCell(0);
         let titulo2 = cabecera.insertCell(1);
-        titulo1.textContent = 'Código';
-        titulo2.textContent = 'Nombre';
-        while (aux != null) {
+        titulo1.textContent = 'Nombre';
+        titulo2.textContent = 'Duración';
+        let aux = null;
+        let temp = inicio;
+        while (temp != aux) {
+            aux = inicio;
             let fila = table.insertRow(-1);
             let celda1 = fila.insertCell(0);
             let celda2 = fila.insertCell(1);
-            celda1.textContent = aux.codigo;
-            celda2.textContent = aux.nombre;
-            aux = aux.siguiente;
+            celda1.textContent = temp.nombre;
+            celda2.textContent = temp.duracion;
+            temp = temp.siguiente;
         }
     }
     function mostrarInsertar(cboxInsertar) {

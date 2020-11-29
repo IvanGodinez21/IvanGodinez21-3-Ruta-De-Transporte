@@ -67,7 +67,7 @@ btnAgregar.addEventListener('click', () => {
                 interfaz.mostrarAlerta('🚫 Error 🚫', 'Por favor ingresa la casilla en la que se insertará la base');
             }
         }
-        console.log(ruta);
+        console.log(ruta.inicio);
     } else {
         interfaz.mostrarAlerta('🚫 Error 🚫', 'Por favor llena todos los campos');
     }
@@ -79,15 +79,15 @@ btnEliminar.addEventListener('click', () => {
         if (ruta.inicio != null) {
             var found = ruta.eliminar(nombre);
             if (found != null) {
-                console.log(ruta);
+                console.log(ruta.inicio);
                 console.log(found);
             } else {
-                console.log(ruta);
+                console.log(ruta.inicio);
                 console.log(`Base no encontrada`);
                 interfaz.mostrarAlerta('🚫 Error 🚫', 'Base no encontrada');
             }
         } else {
-            console.log(ruta);
+            console.log(ruta.inicio);
             interfaz.mostrarAlerta('🚫 Error 🚫', 'No quedan bases en la ruta');
         }
     } else {
@@ -99,7 +99,7 @@ btnBuscar.addEventListener('click', () => {
     if (nombre != '') {
         console.clear();
         var found = ruta.buscar(nombre);
-        console.log(ruta);
+        console.log(ruta.inicio);
         if (found == undefined) {
             console.log(`Base no encontrada`);
             interfaz.ocultarBase();
@@ -112,7 +112,9 @@ btnBuscar.addEventListener('click', () => {
         interfaz.mostrarAlerta('🚫 Error 🚫', 'Por favor indica el nombre de la base a buscar');
     }
 });
-btnImprimir.addEventListener('click', () => {});
+btnImprimir.addEventListener('click', () => {
+    ruta.listarBases(interfaz);
+});
 btnLimpiarBase.addEventListener('click', () => {
     let nombre = document.getElementById('nombre');
     let duracion = document.getElementById('duracion');
