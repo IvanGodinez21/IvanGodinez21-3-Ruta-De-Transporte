@@ -1,6 +1,6 @@
 const Ruta = (function (numero) {
     this.numero = numero;
-    this.inicio = undefined;
+    this.inicio = null;
     function agregar(base) {
         if (this.inicio == null) {
             this.inicio = base;
@@ -21,11 +21,11 @@ const Ruta = (function (numero) {
     function insertar(base, casilla) {
         let aux = this.inicio
         if (casilla == 1) {
-            base.siguiente = aux
-            base.anterior = aux.anterior
-            base.anterior.siguiente = base
-            aux.anterior = base
-            this.inicio = base
+            base.siguiente = aux;
+            base.anterior = aux.anterior;
+            base.anterior.siguiente = base;
+            aux.anterior = base;
+            this.inicio = base;
         } else {
             var i = 1
             while (i != casilla) {
@@ -39,9 +39,9 @@ const Ruta = (function (numero) {
             if (i == casilla) {
                 try {
                     base.anterior = aux.anterior;
-                    base.siguiente = aux
-                    base.anterior.siguiente = base
-                    base.siguiente.anterior = base
+                    base.siguiente = aux;
+                    base.anterior.siguiente = base;
+                    base.siguiente.anterior = base;
                     return true;
                 } catch (error) {
                     console.log('error')
@@ -67,18 +67,23 @@ const Ruta = (function (numero) {
         let aux = this.inicio;
         if (this.inicio.nombre == base && this.inicio.anterior == this.inicio && this.inicio.siguiente == this.inicio) {
             this.inicio = null;
+            return aux;
         } else if (this.inicio.nombre == base) {
             this.inicio.siguiente.anterior = this.inicio.anterior;
             this.inicio.anterior.siguiente = this.inicio.siguiente;
             this.inicio = this.inicio.siguiente;
+            return this.inicio;
         } else {
-            while (aux.siguiente.nombre != base) {
+            while (aux.siguiente.nombre != base && aux.siguiente != this.inicio) {
                 aux = aux.siguiente;
             }
-            if (aux.siguiente.nombre == nombre) {
+            if (aux.siguiente.nombre == base) {
+                let found = aux.siguiente;
                 aux.siguiente = aux.siguiente.siguiente;
                 aux.siguiente.anterior = aux;
-                return aux
+                return found;
+            } else {
+                return null;
             }
         }
     }

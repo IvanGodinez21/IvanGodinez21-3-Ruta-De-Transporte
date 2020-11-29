@@ -64,7 +64,7 @@ btnAgregar.addEventListener('click', () => {
                     }
                 }
             } else {
-                interfaz.mostrarAlerta('🚫 Error 🚫', 'Por favor ingresa la casilla en la que se insertará el producto');
+                interfaz.mostrarAlerta('🚫 Error 🚫', 'Por favor ingresa la casilla en la que se insertará la base');
             }
         }
         console.log(ruta);
@@ -72,7 +72,28 @@ btnAgregar.addEventListener('click', () => {
         interfaz.mostrarAlerta('🚫 Error 🚫', 'Por favor llena todos los campos');
     }
 });
-btnEliminar.addEventListener('click', () => {});
+btnEliminar.addEventListener('click', () => {
+    let nombre = document.getElementById('nombre').value;
+    if (nombre != '') {
+        console.clear();
+        if (ruta.inicio != null) {
+            var found = ruta.eliminar(nombre);
+            if (found != null) {
+                console.log(ruta);
+                console.log(found);
+            } else {
+                console.log(ruta);
+                console.log(`Base no encontrada`);
+                interfaz.mostrarAlerta('🚫 Error 🚫', 'Base no encontrada');
+            }
+        } else {
+            console.log(ruta);
+            interfaz.mostrarAlerta('🚫 Error 🚫', 'No quedan bases en la ruta');
+        }
+    } else {
+        interfaz.mostrarAlerta('🚫 Error 🚫', 'Por favor indica el nombre de la base a eliminar');
+    }
+});
 btnBuscar.addEventListener('click', () => {});
 btnImprimir.addEventListener('click', () => {});
 btnLimpiarBase.addEventListener('click', () => {
