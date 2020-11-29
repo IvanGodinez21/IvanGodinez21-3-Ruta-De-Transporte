@@ -2,33 +2,17 @@ const Interfaz = (function () {
     function mostrarAlerta(tipo, mensaje) {
         alert(`${tipo}\n\n${mensaje}`);
     }
-    function mostrarBase(producto) {
-        let tablecodigo = document.getElementById('tablecodigo');
+    function mostrarBase(base) {
         let tablenombre = document.getElementById('tablenombre');
-        let tabledescripcion = document.getElementById('tabledescripcion');
-        let tablecantidad = document.getElementById('tablecantidad');
-        let tablecosto = document.getElementById('tablecosto');
-        let tabletotal = document.getElementById('tabletotal');
-        tablecodigo.innerText = producto.codigo;
-        tablenombre.innerText = producto.nombre;
-        tabledescripcion.innerText = producto.descripcion;
-        tablecantidad.innerText = producto.cantidad;
-        tablecosto.innerText = producto.costo;
-        tabletotal.innerText = producto.total;
+        let tableduracion = document.getElementById('tableduracion');
+        tablenombre.innerText = base.nombre;
+        tableduracion.innerText = base.duracion;
     }
     function ocultarBase() {
-        let tablecodigo = document.getElementById('tablecodigo');
         let tablenombre = document.getElementById('tablenombre');
-        let tabledescripcion = document.getElementById('tabledescripcion');
-        let tablecantidad = document.getElementById('tablecantidad');
-        let tablecosto = document.getElementById('tablecosto');
-        let tabletotal = document.getElementById('tabletotal');
-        tablecodigo.innerText = '----';
+        let tableduracion = document.getElementById('tableduracion');
         tablenombre.innerText = '----';
-        tabledescripcion.innerText = '----';
-        tablecantidad.innerText = '----';
-        tablecosto.innerText = '----';
-        tabletotal.innerText = '----';
+        tableduracion.innerText = '----';
     }
     function listar(aux) {
         let table = document.getElementById('lista');
@@ -56,9 +40,9 @@ const Interfaz = (function () {
             casilla.remove();
         }
     }
-    function limpiarBase(nombre, minutos, cboxInsertar, casilla) {
+    function limpiarBase(nombre, duracion, cboxInsertar, casilla) {
         nombre.value = '';
-        minutos.value = '';
+        duracion.value = '';
         cboxInsertar.checked = false;
         if (casilla) {
             casilla.remove();

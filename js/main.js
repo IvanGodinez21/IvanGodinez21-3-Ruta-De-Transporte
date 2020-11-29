@@ -24,16 +24,16 @@ var ruta = new Ruta(1);
 var base;
 btnAgregar.addEventListener('click', () => {
     let nombre = document.getElementById('nombre').value;
-    let minutos = document.getElementById('minutos').value;
+    let duracion = document.getElementById('duracion').value;
     let casilla = document.getElementById('casilla');
-    if (nombre != '' && minutos != '') {
+    if (nombre != '' && duracion != '') {
         console.clear();
         if (!casilla) {
             if (ruta.inicio == null) {
-                base = new Base(nombre, minutos);
+                base = new Base(nombre, duracion);
                 ruta.agregar(base);
             } else {
-                var aux = new Base(nombre, minutos);
+                var aux = new Base(nombre, duracion);
                 if (ruta.buscar(aux.nombre) != null) {
                     if (ruta.buscar(aux.nombre).nombre != aux.nombre) {
                         ruta.agregar(base, aux);
@@ -48,7 +48,7 @@ btnAgregar.addEventListener('click', () => {
             }
         } else {
             if (casilla.value != '') {
-                var aux = new Base(nombre, minutos);
+                var aux = new Base(nombre, duracion);
                 if (ruta.buscar(aux.nombre) != null) {
                     if (ruta.buscar(aux.nombre).nombre != aux.nombre) {
                         ruta.insertar(aux, casilla.value);
@@ -94,14 +94,31 @@ btnEliminar.addEventListener('click', () => {
         interfaz.mostrarAlerta('🚫 Error 🚫', 'Por favor indica el nombre de la base a eliminar');
     }
 });
-btnBuscar.addEventListener('click', () => {});
+btnBuscar.addEventListener('click', () => {
+    let nombre = document.getElementById('nombre').value;
+    if (nombre != '') {
+        console.clear();
+        var found = ruta.buscar(nombre);
+        console.log(ruta);
+        if (found == undefined) {
+            console.log(`Base no encontrada`);
+            interfaz.ocultarBase();
+            interfaz.mostrarAlerta('🚫 Error 🚫', 'Base no encontrada');
+        } else {
+            interfaz.mostrarBase(found);
+            console.log(found);
+        }
+    } else {
+        interfaz.mostrarAlerta('🚫 Error 🚫', 'Por favor indica el nombre de la base a buscar');
+    }
+});
 btnImprimir.addEventListener('click', () => {});
 btnLimpiarBase.addEventListener('click', () => {
     let nombre = document.getElementById('nombre');
-    let minutos = document.getElementById('minutos');
+    let duracion = document.getElementById('duracion');
     let cboxInsertar = document.getElementById('cboxInsertar');
     let casilla = document.getElementById('casilla');
-    interfaz.limpiarBase(nombre, minutos, cboxInsertar, casilla);
+    interfaz.limpiarBase(nombre, duracion, cboxInsertar, casilla);
 });
 btnLimpiarTarjeta.addEventListener('click', () => {
     let baseInicio = document.getElementById('baseInicio');

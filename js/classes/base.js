@@ -1,6 +1,6 @@
-const Base = (function (nombre, minutos) {
+const Base = (function (nombre, duracion) {
     this.nombre = nombre;
-    this.minutos = minutos;
+    this.duracion = duracion;
     this.anterior = null;
     this.siguiente = null;
 });
