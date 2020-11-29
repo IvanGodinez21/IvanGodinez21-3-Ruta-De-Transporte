@@ -1,7 +1,10 @@
-import { Interfaz } from './interfaz.js'
+import {
+    Interfaz
+} from './interfaz.js'
 const Ruta = (function (numero) {
     this.numero = numero;
     this.inicio = null;
+
     function agregar(base) {
         if (this.inicio == null) {
             this.inicio = base;
@@ -19,8 +22,9 @@ const Ruta = (function (numero) {
         }
         return base;
     }
+
     function insertar(base, casilla) {
-        let aux = this.inicio
+        let aux = this.inicio;
         if (casilla == 1) {
             base.siguiente = aux;
             base.anterior = aux.anterior;
@@ -28,7 +32,7 @@ const Ruta = (function (numero) {
             aux.anterior = base;
             this.inicio = base;
         } else {
-            var i = 1
+            var i = 1;
             while (i != casilla) {
                 if (aux.siguiente != this.inicio) {
                     aux = aux.siguiente;
@@ -45,7 +49,6 @@ const Ruta = (function (numero) {
                     base.siguiente.anterior = base;
                     return true;
                 } catch (error) {
-                    console.log('error')
                     return false;
                 }
             } else {
@@ -53,6 +56,7 @@ const Ruta = (function (numero) {
             }
         }
     }
+
     function buscar(base) {
         let aux = this.inicio;
         if (aux != null) {
@@ -64,6 +68,7 @@ const Ruta = (function (numero) {
             }
         }
     }
+
     function eliminar(base) {
         let aux = this.inicio;
         if (this.inicio.nombre == base && this.inicio.anterior == this.inicio && this.inicio.siguiente == this.inicio) {
@@ -88,10 +93,25 @@ const Ruta = (function (numero) {
             }
         }
     }
+
     function listarBases(interfaz) {
         interfaz.listar(this.inicio);
     }
-    function crearRecorrido(inicio, horaInicio, horaFinal) {}
+
+    function crearRecorrido(inicio, horaInicio, horaFin) {
+        let aux = this.buscar(inicio);
+        let bases = new Array;
+        let juntar = `Recorrido\nBase de inicio: ${aux.nombre} | Hora: ${horaInicio.getHours()}:${horaInicio.getMinutes()}`;
+        while (horaInicio < horaFin) {
+            aux = aux.siguiente;
+            horaInicio.setMinutes((horaInicio.getMinutes()) + Number(aux.duracion));
+            bases.push(`Base: ${aux.nombre} | Hora: ${horaInicio.getHours()}:${horaInicio.getMinutes()}`);
+        }
+        bases.forEach(element => {
+            juntar += `\n${element}`;
+        });
+        return juntar;
+    }
     return {
         agregar: agregar,
         insertar: insertar,
