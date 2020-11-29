@@ -1,0 +1,109 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="img/icon.png" />
+    <title>Ruta de transporte</title>
+</head>
+
+<body>
+    <h1 style="text-align: center;">Ruta de transporte</h1>
+    <div class="flex">
+        <div class="container">
+            <div class="mr">
+                <h2>Añadir base</h2>
+                <input name="nombre" placeholder="Nombre" type="text" id="nombre" />
+            </div>
+            <div class="mr">
+                <input name="minutos" placeholder="Duración (minutos)" type="number" id="minutos" />
+            </div>
+            <div class="mr">
+                <label>Insertar específicamente<input type="checkbox" id="cboxInsertar"></label>
+            </div>
+            <div class="mr" id="divinsertar"></div>
+            <div class="mr">
+                <button id="btnAgregar">Agregar</button>
+            </div>
+            <div class="mr">
+                <button id="btnEliminar">Eliminar</button>
+                <button id="btnBuscar">Buscar</button>
+            </div>
+            <div class="mr">
+                <button id="btnImprimir">Imprimir</button>
+                <button id="btnLimpiarBase">Limpiar</button>
+            </div>
+        </div>
+        <div class="container">
+            <div class="mr">
+                <h2>Tarjeta de trabajo</h2>
+                <input name="baseInicio" placeholder="Base de inicio" type="text" id="baseInicio" />
+            </div>
+            <div class="mr">
+                <p>Hora de inicio</p>
+                <input name="horaInicio" placeholder="Hora de inicio" type="time" id="horaInicio" />
+            </div>
+            <div class="mr">
+                <p>Hora de finalización</p>
+                <input name="horaFin" placeholder="Hora de finalización" type="time" id="horaFin" />
+            </div>
+            <div class="mr">
+                <button id="btnCrear">Crear</button>
+                <button id="btnLimpiarTarjeta">Limpiar</button>
+            </div>
+        </div>
+        <div class="container">
+            <div class="mr">
+                <h2>Info. de la base</h2>
+                <table name="infoarticulo" id="infoarticulo">
+                    <tbody>
+                        <tr>
+                            <td>Característica</td>
+                            <td>Información</td>
+                        </tr>
+                        <tr>
+                            <td>Código</td>
+                            <td id="tablecodigo">----</td>
+                        </tr>
+                        <tr>
+                            <td>Nombre</td>
+                            <td id="tablenombre">----</td>
+                        </tr>
+                        <tr>
+                            <td>Descripción</td>
+                            <td id="tabledescripcion">----</td>
+                        </tr>
+                        <tr>
+                            <td>Cantidad</td>
+                            <td id="tablecantidad">----</td>
+                        </tr>
+                        <tr>
+                            <td>Costo C/U ($)</td>
+                            <td id="tablecosto">----</td>
+                        </tr>
+                        <tr>
+                            <td>Total ($)</td>
+                            <td id="tabletotal">----</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="container">
+            <div class="mr">
+                <h2>Lista impresa</h2>
+                <table name="lista" id="lista">
+                    <tr>
+                        <td>Código</td>
+                        <td>Nombre</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./js/main.js" type="module"></script>
+
+</html>
